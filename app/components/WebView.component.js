@@ -3,7 +3,7 @@ import { BackHandler, } from 'react-native'
 import { WebView } from 'react-native-webview'
 
 const WebViewComponent = ({ handleClose }) => {
-    const BASE_URL = 'https://ajouchong.com'
+    const BASE_URL = 'https://wanted-cake.netlify.app'
     const [webview, setWebview] = useState()
     const [allowGoBack, setAllowGoBack] = useState(false)
 
