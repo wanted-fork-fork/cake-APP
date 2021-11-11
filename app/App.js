@@ -3,11 +3,9 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
  */
-
-import React from 'react'
-import type { Node } from 'react'
+import SplashScreen from 'react-native-splash-screen';
+import React, { useEffect } from 'react'
 import {
     Alert, BackHandler,
     SafeAreaView,
@@ -18,8 +16,12 @@ import {
 
 import WebViewComponent from "./components/WebView.component"
 
-const App: () => Node = () => {
+const App = () => {
     const isDarkMode = useColorScheme() === 'dark'
+
+    useEffect(() => {
+        SplashScreen.hide()
+    }, [])
 
     return (
         <>
@@ -27,7 +29,7 @@ const App: () => Node = () => {
             <SafeAreaView style={styles.root}>
                 <WebViewComponent
                     handleClose={() => {
-                        Alert.alert('종료', '앱을 종료할까요?'), [
+                        Alert.alert('종료', '앱을 종료할까요?', [
                             {
                                 text: "취소",
                                 onPress: () => null,
@@ -35,7 +37,7 @@ const App: () => Node = () => {
                             {
                                 test: "종료",
                                 onPress: () => BackHandler.exitApp()
-                            }]
+                            }])
                     }}
                 />
             </SafeAreaView>
