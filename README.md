@@ -12,6 +12,9 @@
 
 ```sh
 # /app 디렉토리에서,
+npm i
+sudo gem update cocoapods --pre
+pod update
 react-native run-ios          # 아이폰 앱 실행
 react-native run-android      # 안드로이드 앱 실행
 ```
