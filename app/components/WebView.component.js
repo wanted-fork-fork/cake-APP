@@ -9,11 +9,11 @@ const WebViewComponent = ({ handleClose }) => {
 
     useEffect(() => {
         const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
-            if (allowGoBack) webview.goBack();
-            else handleClose();
+            if (allowGoBack) webview.goBack()
+            else handleClose()
             return true
         },)
-        return () => backHandler.remove();
+        return () => backHandler.remove()
     }, [allowGoBack])
 
     useEffect(() => {
@@ -26,6 +26,9 @@ const WebViewComponent = ({ handleClose }) => {
             pullToRefreshEnabled
             startInLoadingState
             allowsBackForwardNavigationGestures
+            scalesPageToFit
+            allowsInlineMediaPlayback
+            mediaPlaybackRequiresUserAction={false}
             overScrollMode={'never'}
             source={{ uri: BASE_URL }}
             mixedContentMode={'compatibility'}
@@ -36,6 +39,25 @@ const WebViewComponent = ({ handleClose }) => {
                 setAllowGoBack(url !== BASE_URL)
             }}
         />
+        // <WebView
+        //     onLoadStart={() => {
+        //         console.log("Start")
+        //     }}
+        //     onLoadEnd={() => setShouldShow(false)}
+        //     userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+        //     source={{ uri: 'Your Website URL' }}
+        //     originWhitelist={['*']}
+        //     javaScriptEnabled
+        //     // allowInlineMediaPlayback={true}
+        //     scalesPageToFit
+        //     allowsInlineMediaPlayback
+        //     mediaPlaybackRequiresUserAction={false}
+        //     startInLoadingState
+        //     onNavigationStateChange={(val) => console.log(val)}
+        //     javaScriptEnabledAndroid
+        //     geolocationEnabled={true}
+        //     useWebkit
+        // />
     )
 }
 export default WebViewComponent
